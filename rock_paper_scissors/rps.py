@@ -1,9 +1,23 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 
+plays = ('rock', 'paper', 'scissors')
+
 def rock_paper_scissors(n):
-  pass 
+    results = []
+    if n == 0:
+        return [[]]
+    if n == 1:
+        results = [[play] for play in plays]
+    if n > 1:
+        for play in plays:
+            current = [play]
+            for item in rock_paper_scissors(n-1):
+                current.extend(item)
+                results.append(current)
+                current = [play]
+    return results
 
 
 if __name__ == "__main__":
